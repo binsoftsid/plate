@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>BINSoft zarade Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="/lib/images/icon/favicon.ico">
+    <link rel="stylesheet" href="/lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/css/themify-icons.css">
+    <link rel="stylesheet" href="/lib/css/metisMenu.css">
+    <link rel="stylesheet" href="/lib/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/lib/css/slicknav.min.css">
+    <!-- amchart css -->
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <!-- others css -->
+    <link rel="stylesheet" href="/lib/css/typography.css">
+    <link rel="stylesheet" href="/lib/css/default-css.css">
+    <link rel="stylesheet" href="/lib/css/styles.css">
+    <link rel="stylesheet" href="/lib/css/responsive.css">
+    <!-- modernizr css -->
+    <script src="/lib/js/vendor/modernizr-2.8.3.min.js"></script>
+	<script src="/codebase/dhtmlx.js"></script>
+    <link rel="stylesheet" type="text/css" href="/codebase/dhtmlx.css">
+	<style>
+		.even{
+			background-color:#E6E6FA;
+		}
+		.uneven{
+			background-color:#F0F8FF;
+		}
+	</style>
+	<style> 
+		.myhover { 
+			background:#eecb5d;  
+		}
+	</style>
+
+
+</head>
+
+<body  onload="doOnload()">
+
+<th:block th:replace="fragments/headerdash :: header"/>
+
+			<!--  Pocetak stranice lozinke -->
+           <div class="main-content-inner">
+                <!-- color pricing start -->
+                <div class="row" >
+                    <div class="col-xl-8 col-ml-6 col-mdl-4 col-sm-6 mt-5">
+                        <div class="card">
+                            <div class="pricing-list">
+                                <div class="prc-head">
+                                    <h4>Tabela putnih troškova</h4>
+                                </div>
+                                <div class="prc-list" id="layoutAdmin" style="height:700px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- color pricing end -->
+            </div>
+        </div>
+        <!-- main content area end -->
+
+     </div>
+    <!-- page container area end -->
+ 
+ 
+ <th:block th:replace="fragments/footerdash :: footer"/>
+ 
+     <!-- jquery latest version -->
+    <script src="/lib/js/vendor/jquery-2.2.4.min.js"></script>
+    <!-- bootstrap 4 js -->
+    <script src="/lib/js/popper.min.js"></script>
+    <script src="/lib/js/bootstrap.min.js"></script>
+    <script src="/lib/js/owl.carousel.min.js"></script>
+    <script src="/lib/js/metisMenu.min.js"></script>
+    <script src="/lib/js/jquery.slimscroll.min.js"></script>
+    <script src="/lib/js/jquery.slicknav.min.js"></script>
+
+    <!-- start chart js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <!-- start highcharts js -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- start zingchart js -->
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script>
+    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+    </script>
+    <!-- all line chart activation -->
+    <script src="/lib/js/line-chart.js"></script>
+    <!-- all pie chart -->
+    <script src="/lib/js/pie-chart.js"></script>
+    
+    
+    <!-- others plugins -->
+    <script src="/lib/js/plugins.js"></script>
+    <script src="/lib/js/scripts.js"></script>
+
+  </body>
+	<script>
+	var neoporeziviiznos="",porez="";
+	formData = [
+		{type: "settings", position: "label-left", labelWidth: 150, inputWidth: 200,labelHeight:20,inputHeight:25},
+		{type: "block", offsetTop: 5, list: [
+			{type: "input", label: "Neoporezivi iznos: ",name:"neopor", value:"",maxLength: 30,validate:"NotEmpty",
+				position:"absolute", labelTop:20,inputTop:18,labelLeft:80,inputLeft:220,inputHeight:25},
+			{type: "input", label: "Porez: ",name:"porez", value:"",maxLength: 30,validate:"NotEmpty",
+				position:"absolute", labelTop:50,inputTop:48,labelLeft:80,inputLeft:220,inputHeight:25}
+
+		]},			
+			{type: "block", blockOffset:0,offsetTop:160, list: [
+			{type: "button", value: "IZMENI", name:"izmeni", position:"absolute",inputTop: 40,inputLeft:30}
+			
+			]}
+		];		
+	
+	
+	function doOnload(){
+		var myLayout = new dhtmlXLayoutObject({parent: "layoutAdmin", pattern: "2E"});
+		myLayout.cells("a").setHeight(300);
+		myLayout.cells("a").cell.style.backgroundColor = "#cbc9af";
+		myLayout.cells("a").setText("USERS DETALJI");
+		myLayout.cells("b").setText("USERS");
+
+		myForm = myLayout.cells("a").attachForm(formData);
+		//myForm.setItemFocus("godina");
+		myForm.setFontSize("14px");
+
+		myGrid = myLayout.cells("b").attachGrid();
+		myGrid.setImagePath("/codebase/imgs/");//path to images required by grid
+		myGrid.setHeader("Rbr,Neoporezivi iznos,Porez(%)");//set column names
+		myGrid.setInitWidths("80,150,150");//set column width in px
+		myGrid.setColAlign("left,left,left");//set column values align
+		myGrid.setColTypes("ro,ro,ro");//set column types
+		myGrid.setColSorting("str,str,str");//set sorting
+		myGrid.setStyle("background-color:#6175ea;color:white; font-weight:bold;", "","", "");
+
+		myGrid.setIconsPath('/codebase/imgs/');
+		myGrid.init();
+		myGrid.enableAlterCss("even","uneven");
+		myGrid.attachEvent("onRowSelect",doOnRowSelected);
+		myGrid.load("/paramputni/prikaz","json");
+
+
+		myForm.setFontSize("14px");
+		myForm.attachEvent("onButtonClick", function(name){
+			if(name=="izmeni"){
+				Izmeni();
+			}
+		});
+
+		}
+	function doOnRowSelected(){
+		var juzername;
+		var red = myGrid.getSelectedRowId();
+		juzername = myGrid.cells(red,0).getValue();
+		myForm.clear();
+		
+		$.get("/paramputni/prikazjedan/?juzername="+juzername,{}, function(data) {
+			var obj = $.parseJSON(JSON.stringify(data));	
+			$.each(obj, function() {
+				myForm.setItemValue("rbr",this['rbr']); 
+				myForm.setItemValue("neopor",this['neoporeziviiznos']); 
+				myForm.setItemValue("porez",this['porez']); 
+				//---------------------------------------------------
+			});		
+		});
+	}	
+	function Izmeni(){
+		//od parametra xx zavisi da li je unos podataka ili izmena podataka
+		var mess1="",strurl="";
+		strurl="/paramputni/izmena/";
+		mess1="Upis nije uspeo";
+				
+		mess2="Popunite osnovne podatke";
+		
+		neoporeziviiznos = myForm.getItemValue("neopor").toString();
+			if(neoporeziviiznos.trim().length == 0) {neoporeziviiznos="";}
+		porez = myForm.getItemValue("porez").toString();
+			if(porez.trim().length == 0) {porez=" ";}
+		//---------------------------------------------------------------
+		//parametri koji se prosledjuju serveru na obradu
+
+		var dataajax = "?neoporeziviiznos=" + neoporeziviiznos;
+		dataajax = dataajax + "&porez=" + porez;
+			
+		if(proveripolja(neoporeziviiznos,neoporeziviiznos)){
+			
+			dhx4.ajax.post(strurl+dataajax,
+					function(r){
+				var t = dhx4.s2j(r.xmlDoc.responseText);
+				var xml = t.toString();
+		
+				if(xml!=null){
+					if (xml=="0"){
+						poruka(mess1);
+					}else{
+						poruka("Podaci su izmenjeni");
+						myForm.clear();
+						myGrid.clearAll();
+						myGrid.load("/paramputni/prikaz","json");
+					}
+				}else{
+					poruka("greska:ajax");
+				}
+			});
+		}else{
+			poruka(mess2);
+		}
+	}
+	function Brisi(){
+		dhtmlx.modalbox({
+				title: "Brisanje",
+				text: "Da li zaista brišete ove podatke",
+				buttons:["Ok","Odustani"],
+				callback:function(r){
+					if(r==0){
+						ObrisiSlog();
+					}
+				}
+		});
+	}
+	function ObrisiSlog(){
+		var mess1="";
+		juzername = myForm.getItemValue("juzername");
+		mess1="Brisanje nije uspelo";
+
+		if(juzername!=null && juzername.trim().length>0){
+			dhx4.ajax.post("/paramputni/brisanje/?juzername=" + juzername,
+				function(r){
+				var t = dhx4.s2j(r.xmlDoc.responseText);
+				var xml = t.toString();
+				
+				if(xml!=null){
+					if (xml=="0"){
+						poruka("Podaci nisu izbrisani");
+					}else{
+						myForm.clear();
+						myGrid.clearAll();
+						myGrid.load("/paramputni/prikaz","json");
+					}
+				}else{
+					poruka("greska:ajax");
+				}
+			});
+		}else{
+			poruka(mess2);
+		}
+	}
+	function proveripolja(str1,str2) {
+		var aa = true;
+
+		if(str1 == null || str1.toString().length==0){
+			aa = false;
+			return false;
+		}
+		if(str2==null || str2.toString().length==0){
+			aa = false;
+			return false;
+		}
+		return aa;
+	}	
+	function poruka(tekstporuke) {
+		dhtmlx.alert({
+			title:"Upozorenje",
+			type:"alert-error",
+			text:tekstporuke
+		});
+	}	
+	</script>
+</html>

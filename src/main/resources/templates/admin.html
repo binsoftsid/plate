@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>BINSoft zarade Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="/lib/images/icon/favicon.ico">
+    <link rel="stylesheet" href="/lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/css/themify-icons.css">
+    <link rel="stylesheet" href="/lib/css/metisMenu.css">
+    <link rel="stylesheet" href="/lib/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/lib/css/slicknav.min.css">
+    <!-- amchart css -->
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <!-- others css -->
+    <link rel="stylesheet" href="/lib/css/typography.css">
+    <link rel="stylesheet" href="/lib/css/default-css.css">
+    <link rel="stylesheet" href="/lib/css/styles.css">
+    <link rel="stylesheet" href="/lib/css/responsive.css">
+    <!-- modernizr css -->
+    <script src="/lib/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body>
+<th:block th:replace="fragments/headerdash :: header"/>
+           
+           <!-- Inner page start -->
+           <div class="main-content-inner">
+                <!-- color pricing start -->
+                <div class="row">
+                    <div class="col-xl-3 col-ml-6 col-mdl-4 col-sm-6 mt-5">
+                        <div class="card">
+                            <div class="pricing-list">
+                                <div class="prc-head">
+                                    <h4>Knjigovodstvo</h4>
+                                </div>
+                                <div class="prc-list">
+                                    <ul>
+                                        <li><a href="#">Kompletno</a></li>
+                                        <li><a href="#">Cena &#8364;1200</a></li>
+                                        <li><a href="#">Rentiranje programa</a></li>
+                                        <li><a href="#">&#8364;50 mesečno</a></li>
+                                        <li class="bold"><a href="#">&#8364;500 godišnje</a></li>
+                                    </ul>
+                                    <a href="#">Buy Package</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-ml-6 col-mdl-4 col-sm-6 mt-5">
+                        <div class="card">
+                            <div class="pricing-list">
+                                <div class="prc-head">
+                                    <h4>Zarade</h4>
+                                </div>
+                                <div class="prc-list">
+                                    <ul>
+                                        <li><a href="#">Obračun zarada radnika</a></li>
+                                        <li><a href="#">Cena &#8364;400</a></li>
+                                        <li><a href="#">Rentiranje programa</a></li>
+                                        <li><a href="#">&#8364;20 mesečno</a></li>
+                                        <li class="bold"><a href="#">&#8364;240 godišnje</a></li>
+                                    </ul>
+                                    <a href="#">Buy Package</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-ml-6 col-mdl-4 col-sm-6 mt-5">
+                        <div class="card">
+                            <div class="pricing-list">
+                                <div class="prc-head">
+                                    <h4>Robno</h4>
+                                </div>
+                                <div class="prc-list">
+                                    <ul>
+                                        <li><a href="#">Robno knjigovodstvo</a></li>
+                                        <li><a href="#">Cena &#8364;500</a></li>
+                                        <li><a href="#">Rentiranje programa</a></li>
+                                        <li><a href="#">&#8364;30 mesečno</a></li>
+                                        <li class="bold"><a href="#">&#8364;360 godišnje</a></li>
+                                    </ul>
+                                    <a href="#">Buy Package</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-ml-6 col-mdl-4 col-sm-6 mt-5">
+                        <div class="card">
+                            <div class="pricing-list">
+                                <div class="prc-head">
+                                    <h4>POS Terminal</h4>
+                                </div>
+                                <div class="prc-list">
+                                    <ul>
+                                        <li><a href="#">Program kasa</a></li>
+                                        <li><a href="#">Cena &#8364;250</a></li>
+                                        <li><a href="#">Rentiranje programa</a></li>
+                                        <li><a href="#">&#8364;10 mesečno</a></li>
+                                        <li class="bold"><a href="#">&#8364;120 godišnje</a></li>
+                                    </ul>
+                                    <a href="#">Buy Package</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- color pricing end -->
+                <!-- dark pricing start -->
+                <div class="row">
+                    <div class="col-xl-3 col-ml-6 col-mdl-4 col-sm-6 mt-5">
+                        <div class="card">
+                            <div class="pricing-list dark-pricing">
+                                <div class="prc-head">
+                                    <h4>Poliklinika</h4>
+                                </div>
+                                <div class="prc-list">
+                                    <ul>
+                                        <li><a href="#">Poliklinika evidencije</a></li>
+                                        <li><a href="#">Cena &#8364;500</a></li>
+                                        <li><a href="#">Rentiranje programa</a></li>
+                                        <li><a href="#">&#8364;30 mesečno</a></li>
+                                        <li class="bold"><a href="#">&#8364;360 godišnje</a></li>
+                                    </ul>
+                                    <a href="#">Buy Package</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-ml-6 col-mdl-4 col-sm-6 mt-5">
+                        <div class="card">
+                            <div class="pricing-list dark-pricing">
+                                <div class="prc-head">
+                                    <h4>Autoservis</h4>
+                                </div>
+                                <div class="prc-list">
+                                    <ul>
+                                        <li><a href="#">Evidencija popravki</a></li>
+                                        <li><a href="#">Cena &#8364;250</a></li>
+                                        <li><a href="#">Rentiranje programa</a></li>
+                                        <li><a href="#">&#8364;10 mesečno</a></li>
+                                        <li class="bold"><a href="#">&#8364;120 godišnje</a></li>
+                                  </ul>
+                                    <a href="#">Buy Package</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-ml-6 col-mdl-4 col-sm-6 mt-5">
+                        <div class="card">
+                            <div class="pricing-list dark-pricing">
+                                <div class="prc-head">
+                                    <h4>Fakturisanje</h4>
+                                </div>
+                                <div class="prc-list">
+                                    <ul>
+                                        <li><a href="#">Program za račune</a></li>
+                                        <li><a href="#">Cena &#8364;150</a></li>
+                                        <li><a href="#">Rentiranje programa</a></li>
+                                        <li><a href="#">&#8364;10 mesečno</a></li>
+                                        <li class="bold"><a href="#">&#8364;120 godišnje</a></li>
+                                    </ul>
+                                    <a href="#">Buy Package</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-ml-6 col-mdl-4 col-sm-6 mt-5">
+                        <div class="card">
+                            <div class="pricing-list dark-pricing">
+                                <div class="prc-head">
+                                    <h4>Kupoprodaja</h4>
+                                </div>
+                                <div class="prc-list">
+                                    <ul>
+                                        <li><a href="#">Kupoprodaja nekretnina</a></li>
+                                        <li><a href="#">Cena &#8364;150</a></li>
+                                        <li><a href="#">Rentiranje programa</a></li>
+                                        <li><a href="#">&#8364;10 mesečno</a></li>
+                                        <li class="bold"><a href="#">&#8364;120 godišnje</a></li>
+                                    </ul>
+                                    <a href="#">Buy Package</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- dark pricing end -->
+            </div>
+        </div>
+        <!-- main content area end -->
+
+
+
+	<th:block th:replace="fragments/footerdash :: footer"/>
+	
+    <!-- offset area end -->
+    <!-- jquery latest version -->
+    <script src="/lib/js/vendor/jquery-2.2.4.min.js"></script>
+    <!-- bootstrap 4 js -->
+    <script src="/lib/js/popper.min.js"></script>
+    <script src="/lib/js/bootstrap.min.js"></script>
+    <script src="/lib/js/owl.carousel.min.js"></script>
+    <script src="/lib/js/metisMenu.min.js"></script>
+    <script src="/lib/js/jquery.slimscroll.min.js"></script>
+    <script src="/lib/js/jquery.slicknav.min.js"></script>
+
+    <!-- start chart js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <!-- start highcharts js -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- start zingchart js -->
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script>
+    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+    </script>
+    <!-- all line chart activation -->
+    <script src="/lib/js/line-chart.js"></script>
+    <!-- all pie chart -->
+    <script src="/lib/js/pie-chart.js"></script>
+    
+    
+    <!-- others plugins -->
+    <script src="/lib/js/plugins.js"></script>
+    <script src="/lib/js/scripts.js"></script>
+
+  </body>
+
+</html>

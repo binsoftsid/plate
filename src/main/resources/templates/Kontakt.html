@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Program za zarade</title>
+
+    <!-- Bootstrap core CSS 
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/portfolio-item.css" rel="stylesheet">
+	-->
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+  <script src="/lib/js/331/jquery.min.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  </head>
+  <style>
+  .ajax-loading {
+    text-align: center;
+    margin: 1em;
+    display: none;
+}
+  </style>
+ <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">BIN SOFT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+             <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+           </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+         <div class="container" style="padding: 10px 0;">
+           <div class="row" style="padding:50px;">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Potreban support</h2>
+                    <h3 class="section-subheading text-muted" style="color:#67e236;">Za kratka pitanja možete se obratiti putem poruke .</h3>
+                </div>
+            </div>            
+           <div class="row" style="padding-top:30px;background-color:#ffffff">
+                <div class="col-lg-12 text-center">
+                    <img class="img-fluid" src="/img/linija.jpg" alt="">
+                    <h3 class="section-subheading text-muted" style="color:#67e236;">&nbsp;</h3>
+                </div>
+            </div>            
+           	<div class="row" style="padding:20px;">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Kontaktirajte nas</h2>
+                    <h3 class="section-subheading text-muted" style="color:#67e236;">Popunite donja polja i pošaljite poruku.</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Ime i prezime *" id="name" required data-validation-required-message="Molimo unesite ime.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Email *" id="email" required data-validation-required-message="Molimo unesite email adresu.">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" placeholder="Telefon" id="phone">
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <textarea class="form-control" placeholder="Poruka *" id="message" required data-validation-required-message="Molimo unesite poruku."></textarea>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-lg-12 text-center">
+                                <div id="success"></div>
+                                <button type="button" id="fire" class="btn btn-success" data-toggle="modal" >Pošalji</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div> 
+           <div class="row" style="padding-top:20px;background-color:#ffffff;height:30px;">
+                <div class="col-lg-12 text-center">
+ 					<div class="ajax-loading">
+      					<img src="/img/ajax-loader.gif"/>
+ 					</div>                   
+                </div>
+           </div> 
+           <div class="row" style="padding-top:30px;background-color:#ffffff">
+                <div class="col-lg-12 text-center">
+                    <img class="img-fluid" src="/img/linija.jpg" alt="">
+                    <h3 class="section-subheading text-muted" style="color:#67e236;">&nbsp;</h3>
+                </div>
+           </div> 
+           
+           <!-- end of rows -->           
+	
+  
+<!-- poruka za uspesno poslatu poruku -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">&nbsp;</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h3>Poruka je poslata</h3>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>    
+<!-- poruka za gresku -->
+<div class="modal" id="myModalError">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">&nbsp;</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h3>GRESKA: Poruka nije poslata</h3>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>        
+<!-- poruka za proveru unesenih polja -->
+<div class="modal" id="myModalPolja">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">&nbsp;</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <h3>GRESKA: Potrebna polja nisu popunjena</h3>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div> 
+
+ 
+
+</div>
+<!-- /.container -->
+    
+<!-- Footer -->
+<div th:replace="fragments/footer :: footer"/>
+
+<script>
+//ubacivanje click eventa za button
+$('#fire').on('click', function (e) {
+	posaljiKontakt();
+
+})
+
+function posaljiKontakt(){
+	
+		// getting the value
+		var ime = $("#name").val();	
+		var email = $("#email").val();	
+		var telefon = $("#phone").val();	
+		var poruka = $("#message").val();
+		
+		if (proveriPolja(ime,email,poruka)){
+			
+			$('.ajax-loading').fadeIn();	
+			
+			$.ajax({
+	            url: '/mail/kontaktporuka/',
+	            type: 'POST',
+	            data: {'ime':ime, 'email':email, 'telefon':telefon,'poruka':poruka},
+	          }).done(function(data) {
+	        	  
+	        	  $('.ajax-loading').fadeOut();
+	        	  $("#myModal").modal('show');
+	        	  
+	          }).fail(function() {
+	        	  $("#myModalError").modal('show');
+	          });			
+			
+		}else{
+			$("#myModalPolja").modal('show');
+		}
+	}
+	function proveriPolja(str1,str2,str3){
+		var aa = true;
+
+		if(str1 == null || str1.toString().length==0){
+			aa = false;
+			return false;
+		}
+		if(str2==null || str2.toString().length==0){
+			aa = false;
+			return false;
+		}
+		if(str3==null || str3.toString().length==0){
+			aa = false;
+			return false;
+		}
+		return aa;
+	}
+	
+</script>
+</body>
+</html>

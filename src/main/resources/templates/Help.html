@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Program za zarade</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/portfolio-item.css" rel="stylesheet">
+
+ 
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">BIN SOFT Help</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+             <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+           </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-left">
+         			<ul class="navbar-nav ml-auto">
+             			<li class="nav-item">
+              				<a class="nav-link" href="#uvod"><h4>- Uvod</h4></a>
+            			</li>
+             			<li class="nav-item">
+              				<a class="nav-link" href="#osnovnipodaci"><h4>- Osnovni podaci</h4></a>
+            			</li>
+             			<li class="nav-item">
+              				<a class="nav-link" href="#obracun"><h4>- Obračun</h4></a>
+            			</li>
+             			<li class="nav-item">
+              				<a class="nav-link" href="#izvestaji"><h4>- Izveštaji</h4></a>
+            			</li>
+           			</ul>
+
+
+                </div>
+            </div>
+    
+    <section id="uvod">
+        <div class="container" style="padding: 50px 0;">
+            <div class="row">
+                <div class="col-lg-10 text-left">
+                    <h4 class="section-heading" style="color:green;"><strong>Uvod</strong></h4>
+                    <p>Aplikacija za zarade radnika služi kao informacioni sistem za vođenje isplata zarada radnika za firmu.
+                    Aplikacija je rađena u Java Spring-boot programskom okruženju i radi na svim platformama gde se može instalirati Java. 
+                    Baza podataja je RDB MySQL 5.x</p>
+                    <p>Važna napomena: Zbog specifičnosti programskog jezika nije dozvoljeno unositi nazive u 
+					šifarnicima sa znakom & (engleski and, na primer M&S) i " (navodnici, na primer D.O.O."Komerc") 
+					jer programi za izveštaje neće raditi korektno. Inače može se raditi ćiriličnim ili latiničnim pismom za
+					tekstualne podatke.
+                    </p>
+                    <p>Aplikacija nije vezana za poslovnu godinu tako da se ne mora vršiti otvaranje nove poslovne godine odnosno 
+                    korisnik ne mora da vodi računa o trenutnoj poslovnoj godini jer u izboru za godinu bira poslovnu godinu u kojoj radi. 
+                    Isplate zarada se mogu vršiti više puta u mesecu ali se obavezno mora navoditi procenat isplate. 
+                    </p>
+                    <p>Pre upotrebe aplikacije potrebno je kontaktirati administratora da bi se dobilo korisničko ime i šifra koju je kasnije moguće promeniti.
+                    Kod prvog login-a potrebno je uneti poslovnu godinu i otvoriti barem jednu firmu u šifarniku Preduzeća. Inače se u 
+                    aplikaciji može voditi više firmi istovremeno.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+             	</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="osnovnipodaci">
+        <div class="container" style="padding: 50px 0;">
+            <div class="row">
+                <div class="col-lg-10 text-left">
+                    <h4 class="section-heading" style="color:green;"><strong>Osnovni podaci</strong></h4>
+                    <p>Osnovne podatke predstavljaju takozvani šifarnici kojih ima više a to su podaci o firmi, podaci o radnicima, kreditorima, kreditima
+                    mesnim zajednicama i t.d.
+                    </p>
+                    <p>Aplikacija nije vezana za poslovnu godinu tako da se ne mora vršiti otvaranje nove poslovne godine odnosno 
+                    korisnik ne mora da vodi računa o trenutnoj poslovnoj godini jer u izboru za godinu bira poslovnu godinu u kojoj radi. 
+                    Isplate zarada se mogu vršiti više puta u mesecu ali se obavezno mora navoditi procenat isplate. 
+                    </p>
+                    <p>Pre upotrebe aplikacije potrebno je kontaktirati administratora da bi se dobilo korisničko ime i šifru koju je kasnije moguće promeniti. 
+                    </p>
+                </div>
+            </div><!-- End row -->
+      <div class="row" style="margin-top:30px;">
+        <div class="col-md-6">
+          <img class="img-fluid" src="/img/godina.jpg" alt="">
+        </div>
+        <div class="col-md-6">
+          <h5 class="my-3"><strong>Ekran izbora</strong></h5>
+          <p>Ekran posle uspešnog logovanja gde obavezno unosimo poslovnu godinu i izaberemo firmu u donjoj 
+          tabeli a ako smo nov korisnik idemo dalje gde nas program vodi do otvaranja firme.</p>
+        </div>
+      </div><!-- /.row -->
+     <div class="row" style="margin-top:30px;">
+        <div class="col-md-12">
+          <h5 class="my-3">Startni ekran aplikacije</h5>
+        </div>
+       </div><!-- /.row -->
+
+     <div class="row" style="margin-top:30px;">
+        <div class="col-md-8">
+          <img class="img-fluid" src="/img/start.jpg" alt="">
+        </div>
+        <div class="col-md-4">
+          <p>U levom delu aplikacije nalazi se MENU u obliku stabla gde biramo sve opcije rada u aplikaciji.
+        </div>
+       </div><!-- /.row -->
+
+
+      <div class="row" style="margin-top:50px;">
+        <div class="col-md-6">
+          <img class="img-fluid" src="/img/sifarnikradnika.jpg" alt="">
+        </div>
+        <div class="col-md-6">
+          <h5 class="my-3"><strong>Šifarnik radnika</strong></h5>
+          <p>Tipičan izgled ekrana za manipulaciju osnovnim podacima odnosno šifarnicima u ovom slučaju šifarnik radnika
+          gde se unose, menjaju i brišu osnovni podaci radnika koji su potrebni za obračun zarada.</p>
+          <p>Klikom na dugme Novi radnik prazne se polja i kursor staje na polje Šifra radnika. Ako se unese postojeća šifra
+          pritiskom na taster * Tab * pokazaće se podaci tog radnika ako ne postoji dalje unosimo podatke krećući se tasterom * Tab * 
+          polja za unos iako možemo i sporijim putem klikom miša na svako polje.
+          </p>
+          <p>Ako radnik ima beneficiran radni staž u to polje se stavlja broj 1 a ako nema onda 0. Ako radnik ima olakšice
+          stavlja se šifra olakšice koja se pogleda u šifarniku olakšica pritiskom na dugme označeno na slici desno i 
+          moraju se uneti datumi početka i prestanka olakšica. Datumi se obavezno unose u formatu dd-mm-gggg (n.p.r.25-06-2019)
+          ili se klikne na malu sličicu kalendara pa se odabere odatle. Podaci radnika se mogu pregledati klikom na 
+          radnika u donjoj tabeli.
+          </p>
+        </div>
+       </div><!-- /.row -->
+           <div class="row" style="margin-top:30px;">
+                <div class="col-lg-10">
+                <p><strong>Matični podaci radnika sadrže:</strong></p>
+                <ul>
+                	<li>Šifru koja je redni broj. Ako je vlasnik firme i radnik u njoj mora biti ubačen na šifri 1. U tom slučaju u 
+                	šifarniku preduzeća polje <strong>Poslodavac (D/N)</strong> treba da se stavi slovo D.</li>
+                	<li>Prezime.</li>
+                	<li>Ime.</li>
+                	<li>Koeficijent koji radnik ima.</li>
+                	<li>Šifru mesne zajednice kojoj plaća samodoprinos ako postoji.</li>
+                	<li>Šifru kvalifikacije.</li>
+                	<li>Godine staža.</li>
+                	<li>Meseci staža od 0 do 11.</li>
+                	<li>Način isplate koji može biti (0 - Tekući račun 1 - Gotovina 2 - Štednja ).</li>
+               		<li>Šifru banke koja je 0 ako radnik prima gotovinu.</li>
+               		<li>Šifru opštine (PDV).</li>
+               		<li>Deoničar-vlasnik, unosi se 0 ako nije a 1 ako jeste.</li>
+               		<li>Datum zasnivanja radnog odnosa</li>
+               		<li>Broj tekućeg računa</li>
+               		<li>Oznaku da li radnik plaća ili ne plaća sindikat</li>
+               		<li>Oznaku da li radnik plaća solidarnost</li>
+               		<li>Jedinstveni matični broj građana koji je potreban za M4 obrazac.</li>
+               		<li>Adresa.</li>
+               		<li>Prosek plate zadnjih 12 meseci (bruto po času) ako jer se neki elementi obračuna obično računaju na prosek.</li>
+               		<li>Benef.r.s.(1/0) Beneficirani radni staž (1-ima, 0-nema).</li>
+               		<li>Naziv radnog mesta .</li>
+               		<li>E-mail radnika da bi mogao da prima listić isplate elektronskim putem.</li>
+               		<li>Olakšice (0-nema, 1-ima) i ako stavimo 1 onda se otvaraju polja sa datumima da ubacimo od kog do kog datuma traju olakšice.</li>
+               		<li>Datum od (datum od koga traju olakšice) u formatu dd-mm-gggg</li>
+               		<li>Datum do (datum do koga traju olakšice) u formatu dd-mm-gggg</li>
+                
+                </ul>
+             	</div>
+            </div>
+        </div>
+      
+     <div class="row" style="margin-top:50px;">
+         <div class="col-md-6">
+          <img class="img-fluid" src="/img/krediti.jpg" alt="">
+        </div>
+        <div class="col-md-6">
+          <h5 class="my-3"><strong>Krediti</strong></h5>
+          <p>Rad sa ostalim šifarnicima je identičan kao šifarnik radnika. Izuzetak je unos kredita kao na slici levo.</p>
+          <p>Prvo kliknemo na dugme <strong>Novi unos</strong> pa unesemo šifru radnika u polje ili ga odaberemo klikom na dugme <strong>Svi</strong> i
+         	Posle klika na dugme <strong>Unesi</strong> tada se u donjoj tabeli pojave podaci kredita radnika ako ih ima. Ako nema ili 
+         	želimo dodati nove kredite kliknemo na dugme <strong>Novi</strong> i upišemo šifru kreditora u polje <strong>Šifra kreditora</strong> ili odaberemo
+         	dugmetom <strong>Svi</strong> kao na slici.
+          </p>
+          <p>Ovde možemo brisati podatke isteklih kredita, dodavati nove ili korigovati postojeće. Unosi se osim šifre
+          kreditora i oznaka partije kredita, ostatak duga i rata. 
+          </p>
+        </div>
+       </div><!-- /.row -->
+ 
+ 
+     </section>
+
+    <section id="obracun">
+        <div class="container" style="padding: 50px 0;">
+            <div class="row">
+                <div class="col-lg-10 text-left">
+                    <h4 class="section-heading" style="color:green;"><strong>Obračun</strong></h4>
+                    <p>Ako su svi šifarnici ažurirani možemo uraditi obračun zarade u meniju <strong>Obračun po satima/Unos podataka</strong>. Možemo raditi obračun iz više delova u mesecu
+                    s tim što se menja procenat isplate u sekciji <strong>PODACI ZAGLAVLJE</strong> u polju <strong>Procenat plate</strong> a Broj obrade će tada biti 1. Ako je isplata jednom
+                    u mesecu ili je konačna isplata polje <strong>Broj obrade:</strong> obavezno mora biti 99.
+                    </p>
+                    <p>Unos podataka obavezno počinje unosom u sekciju <strong>PODACI ZAGLAVLJE</strong> (opšti podaci) i to klikom na dugme Novi unos. Zatim se ide na odabir <strong>Vrste plate</strong>
+                    kojih ima više, zatim unesemo <strong>Mesec:</strong> i <strong>Broj obrade:</strong> pa klik na dugme <strong>Unesi</strong>. Ako već postoji neki unos u taj mesec i broj obrade u tabeli
+                    <strong>PODACI MESEC-TABELA</strong> će se pojaviti
+                    neki podaci i onda moramo kliknuti na neku stavku tabele da bi se popunilo zaglavlje i da bi mogli nastaviti unos 
+                    novih stavki klikom na dugme <strong>Novi radnik</strong> u sekciji <strong>UNOS SATI</strong>. Ako nema unešenih podataka nastavljamo sa unosom podataka zaglavlja na polje
+                    <strong>Vrednost:</strong> gde unosimo bruto osnovicu za obračun zatim <strong>Fond sati:</strong> <strong>Fond sati u mesecu:</strong>, cena toplog obroka po danu (bruto)
+                    <strong>Neoporezivi iznos:</strong>, <strong>Procenat plate:</strong> i zakačiti <strong>Krediti:</strong> ako odbijamo kredite u toj isplati i kvačica
+                    na Min. osnovica: ako neko ima zaradu manju od zakonskog minimuma jer se tada obračun doprinosa vrši na tu osnovicu bez obzira na zaradu.
+                    </p>
+                    <p>Ako su podaci u zaglavlju unešeni prelazimo na unos sati i ostalih podataka u sekciji <strong>UNOS SATI</strong> klikom na dugme <strong>Novi Radnik</strong>. Ako ne znamo šifru radnika
+                    kliknemo na dugme pored označeno sa <strong>***</strong> i iz dobijenog prozora odaberemo radnika. Kada smo popunili sve podatke klikom na dugme <strong>Unesi</strong> podaci
+                    se unose i automatski obrađuju i prikazuju za tog radnika tako da u sekciji <strong>ISPLATNI LISTIĆ</strong> vidimo njegovu isplatnu listu odnosno kompletan
+                    obračun. U konačnoj isplati za mesec program automatski dodaje 1 mesec u matične podatke radnika vezano za staž (zbog minulog rada).
+                    Ako je došlo do greške u unosu podataka radnika ispravimo podatak i kliknemo na dugme <strong>Izmeni</strong> tako da program
+                    briše trenutne podatke i obradu tog radnika i ponavlja operaciju unosa i obrade. To sve važi i za kredite koje vidimo u sekciji <strong>KREDITI-TABELA</strong>.
+                    Podatke za bilo kog radnika možemo kompletno brisati i program automatski vraća kredite i minuli rad u prethodno stanje.
+                    </p>
+                    <p style="color:red;"><strong>UPOZORENJE: podaci se ne smeju brisati za isplate prethodnih meseci koje su prošle kroz Poresku Upravu jer se time narušava integritet podataka (pogotovo krediti) i
+                    naročito ako postoji više isplata u toku meseca.</strong>
+                    </p>
+                </div>
+            </div><!-- End row -->
+      <div class="row" style="margin-top:30px;">
+        <div class="col-md-12">
+          <img class="img-fluid" src="/img/unossati.jpg" alt="">
+        </div>
+      </div><!-- /.row -->
+    
+            <div class="row" style="margin-top:30px;">
+                <div class="col-lg-10 text-left">
+                    <h5 class="section-heading" ><strong>NAČIN OBRAČUNA</strong></h5>
+                    <p>Bruto iznos nekog primanja dobija na osnovu sledeće formule 
+					IZNOS = KOEFICIJENT(iz matičnih podataka) X (BROJ SATI) X (Koeficijent iz parametara za obračun plate)
+                    </p>
+                    <p>Fond sati za obračun Ovaj iznos se dobija za one kategorije kod kojih se unose samo sati. 
+					Ako se unose i bodovi onda je obračun sledeći :
+					IZNOS = BROJ BODOVA X CENA RADA(Vrednost boda)
+                    </p>
+                    <p>Minuli rad se računa kao : 
+					OSNOVICA(Sati) X KOEFICIJENT(iz matičnih podataka) X CENA RADA(Vrednost boda) X PROCENAT (Iz Parametara)
+                    </p>Fond sati za obračun Stimulacija se racuna kao: 
+						Osnovica(Bruto Iznos) X Procenat Stimulacije (Unosi se sa satima) Kategorije kao regres ,
+						razlika iz prethodnog meseca uzima se prosto kao bruto iznos.
+						Ako neki iznos treba oduzeti on se unosi sa predznakom minus (-).
+  					<p>Topli obrok se računa kao : broj dana(iz unosa sati) X CENA TOPLOG OBROKA PO DANU (bruto iznos )
+  					</p>Ako se neka kategorija obračunava na prosek onda se iznos te naknade dobija kao 
+						BROJ SATI X Tromesečni prosek(Bruto po satu) X (Koeficijent iz parametara).
+						Plata se može tako računati da se kao fond sati za obračun unosi 174 što je godišnji prosek , 
+						a to za posledicu ima da je plata veća ako mesec ima više dana i obrnuto. Plata će biti ujednačena 
+						ako se za fond časova unosi stvaran broj radnih sati u mesecu.
+  					<p>Fond sati u mesecu.Ovo je važno za obračun doprinosa.
+						Ako radnik ima manju zaradu od najniže bruto zarade, doprinose plaća na najnižu bruto zaradu što 
+						mu direktno smanjuje iznos zarade.Međutim , ako radnik nije radio pun mesec ovo ne mora biti slučaj.
+						Tada program na osnovu ovog podatka upoređuje njegovu satnicu sa satnicom najniže bruto zarade.
+						Tek ako je ona manja od najniže bruto zarade doprinosi se računaju na najnižu bruto zaradu.
+						Ako to nije slučaj doprinosi se računaju na radnikovu bruto zaradu.
+  					</p>Procenat plate koji se računa.
+						Ako se plata računa iz jednog dela unosi se 100. Ako se plata računa iz više delova uzima se procenat 
+						plate koji se računa.Ovo je bitno zbog iznosa koji se računaju na prosek.Ako bi se plata računala 
+						iz dva dela a procenat stavio 100 radnik bi u prvom delu dobio kompletan iznos onih kategorija na 
+						koje se primenjuje prosek.U drugom delu mu ništa ne bi ostalo za isplatu.
+  						
+  					<p>PRIMER PLATE IZ 2 DELA (po satima) U mesečne unose se unese ukupan broj sati,zatim ukupan broj dana za 
+						topli obrok i ako je regres za ceo mesec 4000 unese se 2000 dinara.Kod obrade prvog dela plate unosi 
+						se pola od bruto iznosa bodova i pola od bruto iznosa toplog obroka po danu procenat plate = 50%. 
+						U drugom konačnom delu unosi se ukupan broj bruto bodova i ukupan broj bruto dinara po danu za 
+						topli obrok dok se regres unosi na ukupan iznos. Sve akontacione isplate program dodaje u isplatnom 
+						listiću u polje AKONTACIJA. Konačan listić je merodavan za kartice radnika jer predstavlja 
+						platu za taj mesec.
+  					</p>Krediti se obično odbijaju samo jednom u mesecu iako mogu i u svim isplatama. 
+						Tehnika je takva da se od ostatka duga odbija iznos rate sve dok postoji vrednost ostatka duga.
+						Ako se ostatak duga smanji tako da bude manja od rate , rata se automatski izjednačava sa ostatkom duga.
+						Ako je rata dovedena na nulu a ostatak duga postoji, kredit miruje, odnosno, ne odbija se.
+						Kredit se automatski briše ako su i rata i ostatak duga dovedeni na nulu. Bitno je napomenuti 
+						da ako se plata računa iz više delova uvek se za vrednost boda(Cenu rada) uzima kumulativan iznos. 
+						Ako je ukupna cena rada 20,000 dinara za taj mesec ,a plata se obrađuje iz dva jednaka dela u prvom 
+						delu se cena rada unosi kao 10,000 a u drugom 20,000 Time je poslednja obrada uvek konačna.
+  					
+  					<p>
+                </div>
+            </div><!-- End row -->
+    
+    
+    
+    
+    
+    </section>
+    
+    
+    
+    </div>
+    <!-- /.container -->
+    
+<!-- Footer -->
+<div th:replace="fragments/footer :: footer"/>
+
+
+</body>
+</html>

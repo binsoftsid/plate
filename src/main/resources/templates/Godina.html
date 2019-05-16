@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Log in with your account</title>
+	<script src="/codebase/dhtmlx.js"></script>
+    <link rel="stylesheet" type="text/css" href="/codebase/dhtmlx.css">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/common.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	<style>
+		.even{
+			background-color:#E6E6FA;
+		}
+		.uneven{
+			background-color:#F0F8FF;
+		}
+	</style>
+
+	<style>
+		html, body {
+			width: 100%;
+			height: 100%;
+			overflow: hidden;
+			margin: 0px;
+			background-color: #06132c;
+		}
+	</style>
+
+	<style>
+		div#layoutGod {
+			position: relative;
+			margin-top: 2px;
+			margin-left: 0px;
+			width: 450px;
+			height: 720px;
+		}
+		div#zaglavlje {
+			position: relative;
+			margin-top: 0;
+			margin-left: 10px;
+			width: 100%;
+			text-align:left;
+			height: 30px;
+			background-color: gray;
+		}
+		
+		</style>
+<style> 
+.myhover { 
+	background:#eecb5d; 
+}
+</style>
+
+</head>
+
+<body onload="doOnload()">
+<div class="container">
+	<div class="row">
+ 		<div class="col-sm-8 text-left">
+ 			
+				<a href="/" style="color:white;text-decoration: none;color:#F7BE81" ><h6><strong>HOME</strong></h6></a>
+			
+		</div>
+	</div>
+
+ 	<div class="row">
+  		<div class="col-sm-4 text-center">
+  			&nbsp;
+		</div> 
+		<div class="col-sm-4 text-center">
+  			<div id="layoutGod">
+		</div> 
+		<div class="col-sm-4 text-center">
+  			&nbsp;
+		</div> 
+	</div> 
+</div>
+<!-- /container -->
+
+<script>
+var myTree,myToolbar,myToolbar1;
+
+formData = [
+	{type: "settings", position: "label-left", labelWidth: 150, inputWidth: 60,labelHeight:20,inputHeight:30},
+	{type: "block", offsetTop: 5, list: [
+		{type: "input", label: "Poslovna godina: ",name:"godina", value:"",maxLength: 4,validate:"NotEmpty,ValidInteger",
+								position:"absolute", labelTop:20,inputTop:18,labelLeft:80,inputLeft:210,inputHeight:30}
+		]}
+	];	
+
+formDataPred = [
+	{type: "settings", position: "label-left", labelWidth: 150, inputWidth: 60,labelHeight:20,inputHeight:25},
+	{type: "block", offsetTop: 5, list: [
+		{type: "input", label: "Šifra: ",name:"sifrafirme", value:"",maxLength: 4,validate:"NotEmpty,ValidInteger",disabled:"true",
+								position:"absolute", labelTop:20,inputTop:18,labelLeft:80,inputLeft:180,inputHeight:25},
+		{type: "input", label: "Naziv: ",name:"nazivfirme", value:"",maxLength: 30,validate:"NotEmpty",disabled:"true",
+			position:"absolute", labelTop:50,inputTop:48,labelLeft:80,inputLeft:180,inputHeight:25, inputWidth: 200}
+		]},			
+		{type: "block", blockOffset:0,offsetTop:80, list: [
+		{type: "button", value: "DALJE", name:"dalje", position:"absolute",inputTop: 40,inputLeft:30},
+		{type: "button", value: "ODUSTANI", name:"odustani",position:"absolute",inputTop: 40,inputLeft:150}
+		]}
+	];	
+	
+function doOnload(){
+var myLayout = new dhtmlXLayoutObject({parent: "layoutGod", pattern: "3E"});
+myLayout.cells("a").setHeight(120);
+//myLayout.cells("d").setHeight(200);
+
+myLayout.cells("a").setText("GODINA");
+myLayout.cells("b").setText("IZBOR FIRMI (kliknite na firmu)");
+myLayout.cells("c").setText("IZABRANA FIRMA");
+
+myForm = myLayout.cells("a").attachForm(formData);
+myForm.setItemFocus("godina");
+myForm.setFontSize("16px");
+
+myGrid = myLayout.cells("b").attachGrid();
+myGrid.setImagePath("/codebase/imgs/");//path to images required by grid
+myGrid.setHeader("Šifra,Naziv,Mesto");//set column names
+myGrid.setInitWidths("80,200,150");//set column width in px
+myGrid.setColAlign("left,left,left");//set column values align
+myGrid.setColTypes("ro,ro,ro");//set column types
+myGrid.setColSorting("int,str,str");//set sorting
+myGrid.setIconsPath('/codebase/imgs/');
+myGrid.setStyle("background-color:#6175ea;color:white; font-weight:bold;", "","", "");
+myGrid.enableRowsHover(true, "myhover");
+
+myGrid.init();
+myGrid.enableAlterCss("even","uneven");
+myGrid.attachEvent("onRowSelect",doOnRowSelected);
+myGrid.load("/preduzeca/prikaz","json");
+
+myFormPred = myLayout.cells("c").attachForm(formDataPred);
+
+myFormPred.setFontSize("14px");
+myFormPred.attachEvent("onButtonClick", function(name){
+	if(name=="dalje"){
+		Dalje();
+	}
+	else if(name=="odustani"){
+		Odustani();
+	}
+});
+
+}
+
+function doOnRowSelected(){
+	var red = myGrid.getSelectedRowId();
+	var sifra = myGrid.cells(red,0).getValue();
+	var naziv = myGrid.cells(red,1).getValue();
+	myFormPred.setItemValue("sifrafirme",sifra.toString()); 
+	myFormPred.setItemValue("nazivfirme",naziv.toString()); 
+}
+function Dalje(){
+	var godina = myForm.getItemValue("godina");
+	var firma = myFormPred.getItemValue("sifrafirme");
+	var nazivfirme = myFormPred.getItemValue("nazivfirme");
+	
+	if(godina == null || godina.toString().length==0){
+			poruka("NISTE IZABRALI POSLOVNU GODINU");
+			myForm.setItemFocus("godina");
+	}else{
+		if(firma == null || firma.toString().length==0){
+			location.href = "/pred";
+		}else{
+			upisiFirmu(firma,godina,nazivfirme);
+			//location.href = "/start";
+		}
+	}
+}function upisiFirmu(firma,godina,nazivfirme){
+	dhx4.ajax.post("/firma/upisifirmu/?pre="+firma+"&godina="+godina+"&nazivfirme="+nazivfirme,function(r){
+		location.href = "/start";
+	});	
+}
+function Odustani(){
+	location.href = "/";
+}
+function poruka(tekstporuke) {
+	dhtmlx.alert({
+		title:"Upozorenje",
+		type:"alert-error",
+		text:tekstporuke
+	});
+}
+
+</script>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+</body>

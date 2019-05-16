@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tree id="0">
+	<item   text="Plate" id="books" open="1">
+		<item text="Šifarnici" id="sifarnici">
+			<item text="Preduzeća" id="pred"></item>
+			<item text="Radnici-podaci" id="maticni"></item>
+			<item text="Mesne zajednice" id="mesz"></item>
+			<item text="Banke" id="banke"></item>
+			<item text="Kvalifikacije" id="kvalif"></item>
+			<item text="Sindikati" id="sindi"></item>
+			<item text="Kreditori" id="kreditori"></item>
+			<item text="Krediti" id="krediti"></item>
+		</item>
+		<item text="Štampa" id="history">
+			<item text="Rekapitulacija plate" id="rekapplate"></item>
+			<item text="Rekapitulacija por. i dop." id="rekappordop"></item>
+			<item text="Virmani" id="virmani">
+				<item text="Doprinosi i porez" id="virpordop"></item>
+				<item text="Tekući računi" id="virtekuci"></item>
+				<item text="Sindikati" id="virsindikati"></item>
+				<item text="Samodoprinos" id="virsamodop"></item>
+				<item text="Kreditori" id="virkreditori"></item>
+			</item>
+			<item text="Isplatne liste" id="isplatneliste"></item>			
+			<item text="Kartica radnika" id="karticaradnika"></item>			
+			<item text="Kartica kredita" id="karticakredita"></item>			
+		</item>
+		<item text="Obračun po satima" id="obrposatima">
+			<item text="Unos podataka" id="unos"></item>
+			<item text="Pregled obrada" id="pregledobrada"></item>
+		</item>
+		<item text="Ostala plaćanja" id="teens">
+			<item text="Putni troškovi" id="putnitroskovi">
+				<item text="Unos putnih troškova" id="putnit"></item>
+				<item text="Spisak za putne troškove" id="spisakputni"></item>
+				<!--  
+				<item text="Virmani neoporezivi deo" id="virmputnineop"></item>
+				<item text="Virmani oporezivi deo" id="virmputniopor"></item>
+				-->
+			</item>
+			<!--  
+			<item text="Preduzetnici" id="jw">
+				<item text="Matični podaci" id="sifpreduzetnika"></item>
+				<item text="Parametri" id="jw_2"></item>
+				<item text="Unos podataka" id="jw_3"></item>
+				<item text="Listić za platu" id="jw_4"></item>
+				<item text="Doprinosi i rekapitulacija" id="jw_5"></item>
+			</item>
+			<item text="Poljoprivrednici" id="polj">
+				<item text="Matični podaci" id="mppolj"></item>
+				<item text="Parametri" id="parampolj"></item>
+				<item text="Unos podataka" id="unospolj"></item>
+				<item text="Listić za platu" id="listpolj"></item>
+				<item text="Doprinosi i rekapitulacija" id="rekpolj"></item>
+			</item>
+			-->
+		</item>
+		<item text="Administracija" id="adm">
+			<item text="Parametri obračuna" id="administracija"></item>
+			<item text="Izmena lozinke" id="izmenalozinke"></item>
+		</item>
+		<item text="Mail sekcija" id="mail">
+			<item text="Slanje e-maila" id="email"></item>
+			<item text="Slanje isplatnih listića" id="slanjelistica"></item>
+		</item>
+		<item text="Izlaz iz programa" id="izlaz">
+			<item text="Log out" id="logout"></item>
+		</item>
+		
+	</item>
+</tree>

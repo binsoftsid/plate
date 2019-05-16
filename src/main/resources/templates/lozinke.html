@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>BINSoft zarade Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="/lib/images/icon/favicon.ico">
+    <link rel="stylesheet" href="/lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/lib/css/themify-icons.css">
+    <link rel="stylesheet" href="/lib/css/metisMenu.css">
+    <link rel="stylesheet" href="/lib/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/lib/css/slicknav.min.css">
+    <!-- amchart css -->
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+    <!-- others css -->
+    <link rel="stylesheet" href="/lib/css/typography.css">
+    <link rel="stylesheet" href="/lib/css/default-css.css">
+    <link rel="stylesheet" href="/lib/css/styles.css">
+    <link rel="stylesheet" href="/lib/css/responsive.css">
+    <!-- modernizr css -->
+    <script src="/lib/js/vendor/modernizr-2.8.3.min.js"></script>
+	<script src="/codebase/dhtmlx.js"></script>
+    <link rel="stylesheet" type="text/css" href="/codebase/dhtmlx.css">
+	<style>
+		.even{
+			background-color:#E6E6FA;
+		}
+		.uneven{
+			background-color:#F0F8FF;
+		}
+	</style>
+	<style> 
+		.myhover { 
+			background:#eecb5d; 
+		}
+	</style>
+
+
+</head>
+
+<body  onload="doOnload()">
+
+
+<th:block th:replace="fragments/headerdash :: header"/>
+
+			<!--  Pocetak stranice lozinke -->
+           <div class="main-content-inner">
+                <!-- color pricing start -->
+                <div class="row" >
+                    <div class="col-xl-8 col-ml-6 col-mdl-4 col-sm-6 mt-5">
+                        <div class="card">
+                            <div class="pricing-list">
+                                <div class="prc-head">
+                                    <h4>Tabela lozinki</h4>
+                                </div>
+                                <div class="prc-list" id="layoutAdmin" style="height:700px;">
+ 
+ 
+ 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- color pricing end -->
+            </div>
+        </div>
+        <!-- main content area end -->
+
+     </div>
+    <!-- page container area end -->
+ 
+ 
+ <th:block th:replace="fragments/footerdash :: footer"/>
+ 
+     <!-- jquery latest version -->
+    <script src="/lib/js/vendor/jquery-2.2.4.min.js"></script>
+    <!-- bootstrap 4 js -->
+    <script src="/lib/js/popper.min.js"></script>
+    <script src="/lib/js/bootstrap.min.js"></script>
+    <script src="/lib/js/owl.carousel.min.js"></script>
+    <script src="/lib/js/metisMenu.min.js"></script>
+    <script src="/lib/js/jquery.slimscroll.min.js"></script>
+    <script src="/lib/js/jquery.slicknav.min.js"></script>
+
+    <!-- start chart js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <!-- start highcharts js -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- start zingchart js -->
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script>
+    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+    </script>
+    <!-- all line chart activation -->
+    <script src="/lib/js/line-chart.js"></script>
+    <!-- all pie chart -->
+    <script src="/lib/js/pie-chart.js"></script>
+    
+    
+    <!-- others plugins -->
+    <script src="/lib/js/plugins.js"></script>
+    <script src="/lib/js/scripts.js"></script>
+
+  </body>
+	<script>
+	var juzername,juzerpasword,ime,prezime,rola;
+	formData = [
+		{type: "settings", position: "label-left", labelWidth: 150, inputWidth: 200,labelHeight:20,inputHeight:25},
+		{type: "block", offsetTop: 5, list: [
+			{type: "input", label: "User name: ",name:"juzername", value:"",maxLength: 30,validate:"NotEmpty",
+				position:"absolute", labelTop:20,inputTop:18,labelLeft:80,inputLeft:180,inputHeight:25},
+			{type: "input", label: "Password: ",name:"juzerpasword", value:"",maxLength: 30,validate:"NotEmpty",
+				position:"absolute", labelTop:50,inputTop:48,labelLeft:80,inputLeft:180,inputHeight:25},
+			{type: "input", label: "Ime: ",name:"ime", value:"",maxLength: 30,validate:"NotEmpty",
+				position:"absolute", labelTop:80,inputTop:78,labelLeft:80,inputLeft:180,inputHeight:25},
+			{type: "input", label: "Prezime: ",name:"prezime", value:"",maxLength: 30,validate:"NotEmpty",
+				position:"absolute", labelTop:110,inputTop:108,labelLeft:80,inputLeft:180,inputHeight:25},
+				{type: "select", label: "Rola:",name:"rola",  options:[
+		            {text: "ROLE_USER", value: "1"},
+		            {text: "ROLE_ADMIN", value: "2"}
+		        ],position:"absolute",labelTop:140,labelLeft:80,labelWidth:120,inputTop: 138,inputLeft:180,inputWidth:120,inputHeight:30}
+
+		]},			
+			{type: "block", blockOffset:0,offsetTop:160, list: [
+			{type: "button", value: "NOVI", name:"novi", position:"absolute",inputTop: 40,inputLeft:30},
+			{type: "button", value: "UNESI", name:"unesi", position:"absolute",inputTop: 40,inputLeft:130},
+			{type: "button", value: "BRIŠI", name:"brisi",position:"absolute",inputTop: 40,inputLeft:240}
+			
+			]}
+		];		
+	
+	
+	function doOnload(){
+		var myLayout = new dhtmlXLayoutObject({parent: "layoutAdmin", pattern: "2E"});
+		myLayout.cells("a").setHeight(300);
+		myLayout.cells("a").cell.style.backgroundColor = "#cbc9af";
+		myLayout.cells("a").setText("USERS DETALJI");
+		myLayout.cells("b").setText("USERS");
+
+		myForm = myLayout.cells("a").attachForm(formData);
+		//myForm.setItemFocus("godina");
+		myForm.setFontSize("14px");
+
+		myGrid = myLayout.cells("b").attachGrid();
+		myGrid.setImagePath("/codebase/imgs/");//path to images required by grid
+		myGrid.setHeader("Username,Password,Rola,Ime,Prezime");//set column names
+		myGrid.setInitWidths("80,200,150,150,150");//set column width in px
+		myGrid.setColAlign("left,left,left,left,left");//set column values align
+		myGrid.setColTypes("ro,ro,ro,ro,ro");//set column types
+		myGrid.setColSorting("str,str,str,str,str");//set sorting
+		myGrid.setStyle("background-color:#6175ea;color:white; font-weight:bold;", "","", "");
+		myGrid.enableRowsHover(true, "myhover");
+		myGrid.setIconsPath('/codebase/imgs/');
+		myGrid.init();
+		myGrid.enableAlterCss("even","uneven");
+		myGrid.attachEvent("onRowSelect",doOnRowSelected);
+		myGrid.load("/admindata/prikaz","json");
+
+
+		myForm.setFontSize("14px");
+		myForm.attachEvent("onButtonClick", function(name){
+			if(name=="novi"){
+				myForm.clear();
+				myForm.setItemFocus("juzername");
+			}else if(name=="unesi"){
+				Unesi();
+			}
+			else if(name=="brisi"){
+				Brisi();
+			}
+		});
+
+		}
+	function doOnRowSelected(){
+		var juzername;
+		var red = myGrid.getSelectedRowId();
+		juzername = myGrid.cells(red,0).getValue();
+		myForm.clear();
+		
+		//JQuery poziv na iscitavanje podataka jednog radnika kao i prikaz u formu
+		$.get("/admindata/prikazjedan/?juzername="+juzername,{}, function(data) {
+			var obj = $.parseJSON(JSON.stringify(data));	
+			$.each(obj, function() {
+				myForm.setItemValue("juzername",this['username']); 
+				myForm.setItemValue("juzerpasword",this['password']); 
+				myForm.setItemValue("ime",this['ime']); 
+				myForm.setItemValue("prezime",this['prezime']); 
+				if(this['role'] == 'ROLE_USER'){
+					myForm.setItemValue("rola",1); 
+				}else{
+					myForm.setItemValue("rola",2); 	
+				}
+				//myForm.setItemValue("rola",this['role']); 			
+				//---------------------------------------------------
+			});		
+		});
+	}	
+	function Unesi(){
+		//od parametra xx zavisi da li je unos podataka ili izmena podataka
+		var mess1="",strurl="";
+		strurl="/admindata/unos/";
+		mess1="Upis nije uspeo";
+				
+		mess2="Popunite osnovne podatke";
+		
+		juzername = myForm.getItemValue("juzername");
+
+		juzerpasword = myForm.getItemValue("juzerpasword").toString();
+			if(juzerpasword.trim().length == 0) {juzerpasword=" ";}
+		ime = myForm.getItemValue("ime").toString();
+			if(ime.trim().length == 0) {ime="";}
+		prezime = myForm.getItemValue("prezime").toString();
+			if(prezime.trim().length == 0) {prezime=" ";}
+		var rola = myForm.getItemValue("rola").toString();
+			if(rola.trim().length == 0) {rola="ROLE_USER";}
+		//---------------------------------------------------------------
+		//parametri koji se prosledjuju serveru na obradu
+
+		var dataajax = "?juzername=" + juzername;
+		dataajax = dataajax + "&juzerpasword=" + juzerpasword;
+		dataajax = dataajax + "&ime=" + ime;
+		dataajax = dataajax + "&prezime=" + prezime;
+		dataajax = dataajax + "&rola=" + rola;
+			
+		if(proveripolja(juzername,juzerpasword)){
+			
+			dhx4.ajax.post(strurl+dataajax,
+					function(r){
+				var t = dhx4.s2j(r.xmlDoc.responseText);
+				var xml = t.toString();
+		
+				if(xml!=null){
+					if (xml=="0"){
+						poruka(mess1);
+					}else{
+						poruka("Podaci su upisani");
+						myForm.clear();
+						myGrid.clearAll();
+						myGrid.load("/admindata/prikaz","json");
+					}
+				}else{
+					poruka("greska:ajax");
+				}
+			});
+		}else{
+			poruka(mess2);
+		}
+	}
+	function Brisi(){
+		dhtmlx.modalbox({
+				title: "Brisanje",
+				text: "Da li zaista brišete ove podatke",
+				buttons:["Ok","Odustani"],
+				callback:function(r){
+					if(r==0){
+						ObrisiSlog();
+					}
+				}
+		});
+	}
+	function ObrisiSlog(){
+		var mess1="";
+		juzername = myForm.getItemValue("juzername");
+		mess1="Brisanje nije uspelo";
+
+		if(juzername!=null && juzername.trim().length>0){
+			dhx4.ajax.post("/admindata/brisanje/?juzername=" + juzername,
+				function(r){
+				var t = dhx4.s2j(r.xmlDoc.responseText);
+				var xml = t.toString();
+				
+				if(xml!=null){
+					if (xml=="0"){
+						poruka("Podaci nisu izbrisani");
+					}else{
+						myForm.clear();
+						myGrid.clearAll();
+						myGrid.load("/admindata/prikaz","json");
+					}
+				}else{
+					poruka("greska:ajax");
+				}
+			});
+		}else{
+			poruka(mess2);
+		}
+	}
+	function proveripolja(str1,str2) {
+		var aa = true;
+
+		if(str1 == null || str1.toString().length==0){
+			aa = false;
+			return false;
+		}
+		if(str2==null || str2.toString().length==0){
+			aa = false;
+			return false;
+		}
+		return aa;
+	}	
+	function poruka(tekstporuke) {
+		dhtmlx.alert({
+			title:"Upozorenje",
+			type:"alert-error",
+			text:tekstporuke
+		});
+	}	
+	</script>
+</html>

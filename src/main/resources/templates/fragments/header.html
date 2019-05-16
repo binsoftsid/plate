@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>ZARADE </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+<style> 
+.myhover { 
+	background:yellow; 
+}
+</style>	
+    
+
+<body >
+<th:block th:fragment="header">
+<div id="zaglavlje" style="padding-top:10px;">
+	<table style="font-size:12px"><tr>
+	 	<form action="#">
+ 	 	<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="color:white"><strong>KORISNIK:&nbsp;&nbsp;</strong></td>
+ 	 	<td> 
+ 	 		<input type="text" name="korisnik" id="korisnik" disabled>
+ 	 	</td><td>&nbsp;>&nbsp;&nbsp;>&nbsp;<td>
+ 	 	<td style="color:white"><strong>POSLOVNA GODINA:&nbsp;&nbsp;</strong></td>
+ 	 	<td> <input type="text" name="poslovnagodina" id="poslovnagodina" disabled></td>
+ 	 	<td>&nbsp;>&nbsp;&nbsp;>&nbsp;<td>
+ 	 	<td style="color:white"><strong>FIRMA:&nbsp;&nbsp;</strong></td>
+ 	 	<td> <input type="text" name="kojafirma" id="kojafirma" disabled></td>
+ 		<td>
+ 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	 		
+ 	 	</td>
+ 		<td>
+ 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	 		
+ 	 	</td> 	 	
+ 	 	<td>
+ 	 		<a href="/godina" style="color:white;text-decoration: none;color:#A9F5F2" ><h6><strong>IZBOR FIRMI</strong></h6></a>
+ 	 	</td>
+  		<td>
+ 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	 		
+ 	 	</td> 	 	
+ 	 	<td>
+ 	 		<a href="/logout" style="color:white;text-decoration: none;color:#F7BE81" ><h6><strong>LOG OUT</strong></h6></a>
+ 	 	</td>
+ 	 </tr>
+ 	 </form> 
+ 	 </table>
+  	
+
+</div>	
+<div id="layoutObj">
+	<div id="toolbarObj"></div>
+</div>
+
+<script>
+var myTree,myToolbar,myToolbar1;
+var firma,godina,ime,prezime;
+ucitajFirmu();
+
+var myLayout = new dhtmlXLayoutObject({parent: "layoutObj", pattern: "2U"});
+myLayout.cells("a").setWidth(250);
+myLayout.cells("b").setHeight(150);
+
+myLayout.cells("a").setText("MENU");
+myLayout.cells("b").setText("");
+
+myTree = myLayout.cells("a").attachTree();
+myTree.setImagePath("../codebase/imgs/dhxtree_material/");
+myTree.load("../xml/tree.xml");
+myTree.setOnClickHandler(tonclick);
+
+
+function ucitajFirmu(){
+	var ffirma="0",nazivfirme="";
+	$.get("/godina/podaciuser",{}, function(data) {
+		var obj = $.parseJSON(JSON.stringify(data));	
+		$.each(obj, function() {
+			firma = this['firma'];
+			godina = this['godina'];
+			ime = this['ime'];
+			prezime = this['prezime'];
+			nazivfirme = this['nazivfirme'];
+			document.getElementById("poslovnagodina").value = godina; 
+			document.getElementById("korisnik").value = ime + " " + prezime; 
+			document.getElementById("kojafirma").value = nazivfirme; 
+		});		
+	});
+}
+function tonclick(id){
+	//	Izbor u tree meniju koji REST kontroler poziva
+	switch(id) {
+		case "pred":
+			location.href = "/pred";
+			break;
+		case "maticni":
+			location.href = "/maticna";
+			break;
+		case "mesz":
+			location.href = "/mesnez";
+			break;
+		case "banke":
+			location.href = "/banke";
+			break;
+		case "kreditori":
+			location.href = "/kreditori";
+			break;
+		case "krediti":
+			location.href = "/krediti";
+			break;
+		case "kvalif":
+			location.href = "/kvalifikacije";
+			break;
+		case "sindi":
+			location.href = "/sindikati";
+			break;
+		case "doprinosi":
+			location.href = "/doprinosi";
+			break;
+		case "rekapplate":
+			location.href = "/rekapplate";
+			break;
+		case "rekappordop":
+			location.href = "/rekappordop";
+			break;
+		case "virtekuci":
+			location.href = "/virmanitekuci";
+			break;
+		case "virpordop":
+			location.href = "/virmanipordop";
+			break;
+		case "virsindikati":
+			location.href = "/virmanisindikati";
+			break;
+		case "virsamodop":
+			location.href = "/virmanisamodop";
+			break;
+		case "virkreditori":
+			location.href = "/virmanikreditori";
+			break;
+		case "unos":
+			location.href = "/unos";
+			break;
+		case "pregledobrada":
+			location.href = "/pregledobrada";
+			break;
+		case "administracija":
+			location.href = "/parametri";
+			break;
+		case "sifpreduzetnika":
+			location.href = "/sifpreduz";
+			break;
+		case "putnit":
+			location.href = "/putnitroskovi";
+			break;
+		case "spisakputni":
+			location.href = "/listaputni";
+			break;
+		case "isplatneliste":
+			location.href = "/isplatneliste";
+			break;
+		case "excel":
+			location.href = "/print/xls";
+			break;
+		case "karticaradnika":
+			location.href = "/karticaradnika";
+			break;
+		case "karticakredita":
+			location.href = "/karticakredita";
+			break;
+		case "email":
+			location.href = "/email";
+			break;
+		case "slanjelistica":
+			location.href = "/emailslanje";
+			break;
+		case "izmenalozinke":
+			location.href = "/izmenalozinke";
+			break;
+		case "logout":
+			logaut();
+			location.href = "/logout";
+			break;
+	} 
+}
+function logaut(){
+	//poziva funkciju za log-aut: auth.setAuthenticated(false);	
+	$.post("/logaut",{}, function(data) {
+		var vrati='';
+	});
+}
+function poruka(tekstporuke) {
+	dhtmlx.alert({
+		title:"Upozorenje",
+		type:"alert-error",
+		text:tekstporuke
+	});
+}
+</script>
+</th:block>
+</body>
+</html>	
+	

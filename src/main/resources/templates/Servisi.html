@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Program za zarade</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/portfolio-item.css" rel="stylesheet">
+
+ 
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">BIN SOFT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+          <!--  
+            	<li class="nav-item active">
+              	<a class="nav-link" href="/start">Start
+                	<span class="sr-only">(current)</span>
+              	</a>
+            	</li>
+          -->
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <!-- Portfolio Item Heading -->
+      <h1 class="my-4">SERVISI
+        <small>Korisna uputstva i obrasci</small>
+      </h1>
+
+      <!-- Portfolio Item Row -->
+      <div class="row">
+
+
+        <div class="col-md-4">
+          <h3 class="my-3">Uputstva</h3>
+          <p>Ovde se nalaze razna uputstva za knjigovodstvene agencije</p>
+          <h3 class="my-3">Sadržaj</h3>
+          <ul>
+            <li><a href="/pdf/Uputstvo_popdv.pdf" target="_blank">Uputstvo za POPDV</a></li>
+            <li><a href="/pdf/UPUTSTVO_Potpisivanje_PDF_dokumenta.pdf" target="_blank">Uputstvo za potpisivanje PDF dokumenta</a></li>
+            <li>Krediti</li>
+            <li>Elektronski obrazci</li>
+            <li>Zarade van radnog odnosa</li>
+          </ul>
+        </div>
+        <div class="col-md-8">
+          <img class="img-fluid" src="/img/agen.jpg" alt="">
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+      <div class="row">
+
+
+        <div class="col-md-4">
+          <h3 class="my-3">Obrasci</h3>
+          
+          <h3 class="my-3">Sadržaj</h3>
+          <ul>
+            <li><a href="/pdf/Obrazac_popdv_doc.doc" target="_blank">POPDV word dokument</a></li>
+            <li><a href="/pdf/UPUTSTVO_Potpisivanje_PDF_dokumenta.pdf" target="_blank">Uputstvo za potpisivanje PDF dokumenta</a></li>
+            <li>Krediti</li>
+            <li>Elektronski obrazci</li>
+            <li>Zarade van radnog odnosa</li>
+          </ul>
+        </div>
+        <div class="col-md-8">
+          <img class="img-fluid" src="/img/agen_1.jpg" alt="">
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+    
+<!-- Footer -->
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>
